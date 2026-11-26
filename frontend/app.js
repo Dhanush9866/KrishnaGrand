@@ -321,15 +321,31 @@ function setupMobileNav() {
     const nav = document.getElementById('navMenu');
 
     if (toggle && nav) {
-        toggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isActive = nav.classList.toggle('active');
+            const icon = toggle.querySelector('i');
+            if (icon) {
+                icon.className = isActive ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+            }
         });
 
         // Close menu on link click
         nav.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                if (icon) icon.className = 'fa-solid fa-bars';
             });
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (nav.classList.contains('active') && !nav.contains(e.target) && !toggle.contains(e.target)) {
+                nav.classList.remove('active');
+                const icon = toggle.querySelector('i');
+                if (icon) icon.className = 'fa-solid fa-bars';
+            }
         });
     }
 }

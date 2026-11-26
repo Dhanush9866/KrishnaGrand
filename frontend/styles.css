@@ -245,6 +245,10 @@ h1, h2, h3, h4 {
     color: var(--gold-accent);
 }
 
+.top-bar-mobile {
+    display: none;
+}
+
 .contact-info {
     display: flex;
     gap: 15px;
@@ -1225,63 +1229,1000 @@ h1, h2, h3, h4 {
     color: #FFF;
 }
 
-/* Responsive Media Queries */
+/* ==========================================================================
+   COMPREHENSIVE MOBILE RESPONSIVE ENGINE
+   ========================================================================== */
+
+/* Tablet & Medium Screens (max-width: 992px) */
 @media (max-width: 992px) {
+    .container {
+        padding: 0 16px;
+    }
+
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.6rem;
+    }
+
+    .rooms-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .amenities-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .location-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
 
     .footer-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
     }
 }
 
+/* Mobile & Small Tablets (max-width: 768px) */
 @media (max-width: 768px) {
-    .top-bar-content {
-        flex-direction: column;
-        gap: 6px;
-        text-align: center;
+    body {
+        padding-bottom: 48px; /* Slim space for fixed bottom bar */
+    }
+
+    /* Container */
+    .container {
+        padding: 0 12px;
+    }
+
+    /* Section Headers - Compact & Elegant */
+    .section-header {
+        margin-bottom: 16px;
+    }
+
+    .section-badge {
+        padding: 2px 10px;
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+        border-radius: 20px;
+    }
+
+    .section-header h2 {
+        font-size: 1.25rem !important;
+        letter-spacing: 0.5px;
+        line-height: 1.25;
+        margin-bottom: 4px;
+    }
+
+    .section-header p {
+        font-size: 0.78rem;
+        line-height: 1.35;
+        max-width: 92%;
+        margin: 0 auto;
+    }
+
+    /* Top Bar Mobile Optimization - Smooth Scrolling Marquee Ticker */
+    .top-bar {
+        padding: 6px 0;
+        overflow: hidden;
+    }
+
+    .top-bar-desktop {
+        display: none !important;
+    }
+
+    .top-bar-mobile {
+        display: block !important;
+        overflow: hidden;
+        width: 100%;
+        white-space: nowrap;
+        position: relative;
+    }
+
+    .ticker-track {
+        display: inline-flex;
+        width: max-content;
+        will-change: transform;
+        animation: topBarMarquee 22s linear infinite;
+    }
+
+    .top-bar-ticker:hover .ticker-track,
+    .top-bar-ticker:active .ticker-track {
+        animation-play-state: paused;
+    }
+
+    .ticker-item {
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+        flex-shrink: 0;
+        gap: 16px;
+        padding-right: 16px;
+        font-size: 0.76rem;
+    }
+
+    .ticker-item span {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .ticker-item a {
+        color: #FFF;
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-color: rgba(212, 175, 55, 0.4);
+        text-underline-offset: 2px;
+    }
+
+    .ticker-item a:hover {
+        color: var(--gold-accent);
+    }
+
+    .ticker-item i {
+        color: var(--gold-accent);
+    }
+
+    .ticker-sep {
+        color: var(--gold-accent);
+        font-size: 0.65rem;
+        opacity: 0.85;
+    }
+
+    @keyframes topBarMarquee {
+        0% {
+            transform: translate3d(0, 0, 0);
+        }
+        100% {
+            transform: translate3d(-50%, 0, 0);
+        }
+    }
+
+    /* Header & Mobile Navigation - Compact */
+    .main-header {
+        padding: 6px 0;
+    }
+
+    .logo-img {
+        height: 42px;
+    }
+
+    .brand-name {
+        font-size: 1.05rem;
+        letter-spacing: 0.5px;
+    }
+
+    .brand-tagline {
+        font-size: 0.58rem;
+        letter-spacing: 1px;
+    }
+
+    .header-actions .btn-gold {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+        background: #FAF6ED;
+        border: 1px solid var(--border-gold);
+        font-size: 1.15rem;
+        color: var(--primary-maroon);
     }
 
     .nav-menu {
         position: fixed;
-        top: 70px;
+        top: 56px;
         left: -100%;
         width: 100%;
-        height: calc(100vh - 70px);
+        height: calc(100vh - 56px);
         background: #FFF;
         flex-direction: column;
-        padding: 30px;
-        transition: var(--transition);
+        padding: 16px 18px 30px;
+        gap: 0;
+        transition: left 0.28s ease;
         box-shadow: var(--shadow-lg);
+        z-index: 1050;
+        overflow-y: auto;
     }
 
     .nav-menu.active {
         left: 0;
     }
 
-    .mobile-toggle {
-        display: block;
+    .nav-link {
+        font-size: 0.95rem;
+        padding: 11px 8px;
+        border-bottom: 1px solid #F2EFE8;
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link.active::after {
+        display: none;
+    }
+
+    .nav-link.active {
+        color: var(--primary-maroon);
+        font-weight: 700;
+        background: #FFFDF8;
+        border-radius: 4px;
+    }
+
+    /* Hero Section Mobile - Crisp Background Visibility */
+    .hero-section {
+        min-height: auto;
+        padding: 26px 0 30px;
+        text-align: center;
+        background-position: center center;
+    }
+
+    .hero-overlay {
+        background: linear-gradient(180deg, rgba(12, 12, 16, 0.55) 0%, rgba(12, 12, 16, 0.2) 45%, rgba(12, 12, 16, 0.6) 100%) !important;
+    }
+
+    .badge-tag {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+        margin-bottom: 8px;
+        background: rgba(0, 0, 0, 0.5) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid var(--border-gold);
     }
 
     .hero-title {
-        font-size: 2.1rem;
+        font-size: 1.45rem;
+        line-height: 1.22;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+    }
+
+    .hero-subtitle {
+        font-size: 0.82rem;
+        line-height: 1.35;
+        margin-bottom: 14px;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        padding: 10px 16px;
+        font-size: 0.84rem;
+        border-radius: 6px;
+    }
+
+    /* Completely Remove Foggy Blur Container on Mobile */
+    .hero-highlights {
+        background: transparent !important;
+        border: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 6px !important;
+    }
+
+    .highlight-item {
+        background: rgba(12, 12, 18, 0.6) !important;
+        border: 1px solid rgba(212, 175, 55, 0.35) !important;
+        border-radius: 8px !important;
+        padding: 6px 8px !important;
+        gap: 6px;
+        text-align: left;
+    }
+
+    .highlight-item i {
+        font-size: 1.05rem;
+        color: var(--gold-accent);
+    }
+
+    .highlight-item strong {
+        font-size: 0.76rem;
+        color: #FFF;
+    }
+
+    .highlight-item small {
+        font-size: 0.66rem;
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* Booking Card Mobile - Compact */
+    .booking-section {
+        margin-top: -15px;
+        padding-bottom: 30px;
+    }
+
+    .booking-card {
+        padding: 14px 12px;
+        border-radius: 12px;
+    }
+
+    .card-header {
+        padding-bottom: 10px;
+        margin-bottom: 12px;
+    }
+
+    .card-header h2 {
+        font-size: 1.15rem;
+    }
+
+    .card-header p {
+        font-size: 0.76rem;
+    }
+
+    .booking-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+
+    .form-group label {
+        font-size: 0.78rem;
+        gap: 4px;
+    }
+
+    .form-control {
+        font-size: 0.85rem !important;
+        padding: 8px 10px;
+        border-radius: 6px;
+    }
+
+    .price-summary-box {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 10px 12px;
+        text-align: center;
+        margin-bottom: 14px;
+        border-radius: 8px;
+    }
+
+    .price-details {
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        justify-content: center;
+    }
+
+    .price-amount {
+        font-size: 1.45rem;
+    }
+
+    .price-label {
+        font-size: 0.76rem;
+    }
+
+    .price-subtext {
+        font-size: 0.7rem;
+    }
+
+    .slot-status {
+        justify-content: center;
+        width: 100%;
+        font-size: 0.72rem;
+        padding: 4px 10px;
+    }
+
+    .guest-details-header {
+        margin: 14px 0 10px 0;
+        padding-top: 12px;
+    }
+
+    .guest-details-header h3 {
+        font-size: 1.05rem;
     }
 
     .booking-submit-row {
         grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 10px;
     }
 
+    .booking-submit-row .btn {
+        width: 100%;
+        padding: 10px 14px;
+        font-size: 0.86rem;
+        border-radius: 6px;
+    }
+
+    /* Rooms Section Mobile - Compact */
+    .rooms-section {
+        padding: 30px 0;
+    }
+
+    .rooms-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .room-card {
+        border-radius: 10px;
+    }
+
+    .room-img-wrapper {
+        height: 165px;
+    }
+
+    .room-badge {
+        font-size: 0.66rem;
+        padding: 2px 7px;
+        top: 6px;
+        right: 6px;
+    }
+
+    .view-gallery-btn {
+        font-size: 0.66rem;
+        padding: 2px 7px;
+        bottom: 6px;
+        right: 6px;
+    }
+
+    .room-thumb-row {
+        padding: 4px 6px;
+        gap: 4px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .room-thumb-row::-webkit-scrollbar {
+        display: none;
+    }
+
+    .room-thumb-btn {
+        padding: 3px 6px;
+        font-size: 0.65rem;
+        border-radius: 4px;
+        white-space: nowrap;
+        flex: 1 0 auto;
+    }
+
+    .room-thumb-btn img {
+        width: 14px;
+        height: 14px;
+    }
+
+    .room-content {
+        padding: 12px 10px;
+    }
+
+    .room-content h3 {
+        font-size: 1.05rem;
+        margin-bottom: 3px;
+    }
+
+    .room-desc {
+        font-size: 0.76rem;
+        line-height: 1.32;
+        margin-bottom: 8px;
+    }
+
+    .room-amenities-tags {
+        gap: 4px;
+        margin-bottom: 8px;
+    }
+
+    .room-amenities-tags span {
+        font-size: 0.68rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .room-price-row {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .rate-amount {
+        font-size: 1.15rem;
+    }
+
+    .room-rates small {
+        font-size: 0.68rem;
+    }
+
+    .room-price-row .btn {
+        padding: 7px 12px;
+        font-size: 0.78rem;
+        border-radius: 5px;
+    }
+
+    /* Amenities & Facilities Mobile - 2-Column Sleek Grid */
+    .amenities-section {
+        padding: 30px 0;
+    }
+
+    .amenities-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px;
+    }
+
+    .amenity-box {
+        padding: 10px 8px;
+        border-radius: 8px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .amenity-icon {
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px;
+        font-size: 0.95rem !important;
+        border-radius: 6px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .amenity-box h4 {
+        font-size: 0.8rem !important;
+        margin-bottom: 2px !important;
+        line-height: 1.2 !important;
+    }
+
+    .amenity-box p {
+        font-size: 0.68rem !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Location & Map Mobile - Compact */
+    .location-section {
+        padding: 30px 0;
+    }
+
+    .location-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .location-map iframe {
+        height: 180px;
+        border-radius: 8px;
+    }
+
+    .address-box {
+        padding: 10px 12px;
+        border-radius: 8px;
+        gap: 10px;
+    }
+
+    .address-icon {
+        font-size: 1.1rem;
+    }
+
+    .address-box h3 {
+        font-size: 0.92rem;
+    }
+
+    .address-box p {
+        font-size: 0.76rem;
+        line-height: 1.3;
+    }
+
+    .landmarks-list h4 {
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+    }
+
+    .landmarks-list ul {
+        font-size: 0.76rem;
+        gap: 4px;
+    }
+
+    /* Contact & Reception Desk Cards - Sleek Compact Mobile Grid */
+    .contact-section {
+        padding: 30px 0;
+    }
+
+    .contacts-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .contact-card {
+        padding: 12px 14px;
+        border-radius: 10px;
+        text-align: left;
+        display: grid;
+        grid-template-columns: 36px 1fr auto;
+        grid-template-areas:
+            "icon name action"
+            "icon role action"
+            "icon phone action";
+        align-items: center;
+        gap: 2px 12px;
+    }
+
+    .contact-card.border-gold {
+        border-top: 1px solid var(--border-color);
+        border-left: 3px solid var(--gold-accent);
+    }
+
+    .contact-card-icon {
+        grid-area: icon;
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px;
+        font-size: 0.95rem !important;
+        margin: 0 !important;
+        border-radius: 50%;
+    }
+
+    .contact-card h3 {
+        grid-area: name;
+        font-size: 0.92rem !important;
+        margin: 0 !important;
+        line-height: 1.2;
+    }
+
+    .contact-role {
+        grid-area: role;
+        font-size: 0.66rem !important;
+        margin: 0 !important;
+        letter-spacing: 0.5px;
+    }
+
+    .contact-card .phone-link,
+    .contact-card .phone-numbers-group {
+        grid-area: phone;
+        font-size: 0.8rem !important;
+        margin: 2px 0 0 0 !important;
+    }
+
+    .phone-numbers-group {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .contact-card .btn {
+        grid-area: action;
+        margin: 0 !important;
+        padding: 6px 12px !important;
+        font-size: 0.72rem !important;
+        white-space: nowrap;
+    }
+
+    /* Footer Mobile - Sleek & Compact */
+    .footer {
+        padding: 24px 0 65px !important;
+        background: var(--bg-dark);
+    }
+
+    .footer-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 14px !important;
+        padding-bottom: 14px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    .footer-brand {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .footer-logo {
+        height: 38px !important;
+        margin-bottom: 6px !important;
+    }
+
+    .footer-brand h3 {
+        font-size: 0.92rem !important;
+        margin-bottom: 4px !important;
+        color: var(--gold-accent) !important;
+        letter-spacing: 0.5px !important;
+    }
+
+    .footer-brand p {
+        font-size: 0.72rem !important;
+        line-height: 1.35 !important;
+        max-width: 290px !important;
+        color: rgba(255, 255, 255, 0.6) !important;
+        margin: 0 auto !important;
+    }
+
+    .footer-links {
+        width: 100% !important;
+    }
+
+    .footer-links h4 {
+        display: none !important;
+    }
+
+    .footer-links ul {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 4px 12px !important;
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .footer-links ul li {
+        margin: 0 !important;
+    }
+
+    .footer-links a {
+        font-size: 0.74rem !important;
+        color: rgba(255, 255, 255, 0.75) !important;
+        text-decoration: none !important;
+        padding: 2px 4px !important;
+    }
+
+    .footer-links a:hover {
+        color: var(--gold-accent) !important;
+    }
+
+    .footer-contact {
+        width: 100% !important;
+    }
+
+    .footer-contact h4 {
+        font-size: 0.78rem !important;
+        margin-bottom: 4px !important;
+        color: #FFF !important;
+        letter-spacing: 0.5px !important;
+    }
+
+    .footer-contact p {
+        font-size: 0.72rem !important;
+        margin-bottom: 3px !important;
+        color: rgba(255, 255, 255, 0.65) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+    }
+
+    .footer-bottom {
+        padding: 10px 0 0 !important;
+        font-size: 0.68rem !important;
+        color: rgba(255, 255, 255, 0.4) !important;
+        text-align: center !important;
+    }
+
+    /* Modals & Dialogs Mobile - Compact */
+    .modal-dialog {
+        width: 92%;
+        max-width: 92%;
+        margin: 10px auto;
+    }
+
+    .modal-content {
+        max-height: 86vh;
+        overflow-y: auto;
+        border-radius: 12px;
+    }
+
+    .modal-header {
+        padding: 10px 12px;
+    }
+
+    .modal-header h3 {
+        font-size: 0.95rem;
+    }
+
+    .ticket-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+
+    .t-cell {
+        padding: 6px 8px;
+        background: #F9F7F2;
+        border-radius: 5px;
+    }
+
+    .t-label {
+        font-size: 0.62rem;
+    }
+
+    .t-val {
+        font-size: 0.76rem;
+    }
+
+    .ticket-total-box {
+        flex-direction: column;
+        gap: 2px;
+        text-align: center;
+        padding: 8px 10px;
+        margin-bottom: 12px;
+    }
+
+    .ticket-total-box strong {
+        font-size: 1.25rem;
+    }
+
+    .ticket-total-box span {
+        font-size: 0.75rem;
+    }
+
+    .ticket-notes {
+        padding: 8px 10px;
+        font-size: 0.72rem;
+        margin-bottom: 12px;
+    }
+
+    .ticket-notes h4 {
+        font-size: 0.78rem;
+    }
+
+    .ticket-qr-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 4px;
+        padding: 8px;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        gap: 6px;
+        padding: 10px 12px;
+    }
+
+    .modal-footer .btn {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    /* Gallery Lightbox Mobile - Compact */
+    .gallery-viewer {
+        height: 210px;
+        max-height: 32vh;
+    }
+
+    .gallery-nav {
+        width: 30px;
+        height: 30px;
+        font-size: 0.82rem;
+    }
+
+    .gallery-nav.prev {
+        left: 6px;
+    }
+
+    .gallery-nav.next {
+        right: 6px;
+    }
+
+    .gallery-caption-bar {
+        padding: 6px 8px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        font-size: 0.7rem;
+    }
+
+    .gallery-counter {
+        font-size: 0.68rem;
+        padding: 1px 6px;
+    }
+
+    .gallery-thumbs-strip {
+        padding: 6px 8px;
+        gap: 4px;
+        overflow-x: auto;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .g-thumb {
+        width: 44px;
+        height: 30px;
+        flex-shrink: 0;
+        border-radius: 3px;
+    }
+
+    /* Slim, Low-Profile Floating Bottom Action Bar */
     .floating-mobile-bar {
         display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(8px);
+        padding: 5px 8px calc(5px + env(safe-area-inset-bottom, 0px));
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+        z-index: 999;
+        gap: 5px;
+        border-top: 1px solid var(--border-gold);
     }
 
-    body {
-        padding-bottom: 60px;
+    .float-btn {
+        flex: 1;
+        padding: 6px 3px;
+        border-radius: 6px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        gap: 3px;
+        white-space: nowrap;
+    }
+
+    .float-btn i {
+        font-size: 0.74rem;
+    }
+}
+
+/* Extra Compact Mobile Phones (max-width: 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .hero-title {
+        font-size: 1.35rem;
+    }
+
+    .ticket-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .amenities-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px;
+    }
+
+    .contact-card {
+        grid-template-columns: 34px 1fr;
+        grid-template-areas:
+            "icon name"
+            "icon role"
+            "icon phone"
+            "action action";
+        gap: 2px 10px;
+        padding: 10px 12px;
+    }
+
+    .contact-card .btn {
+        margin-top: 6px !important;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+/* Very Small Devices (max-width: 360px) */
+@media (max-width: 360px) {
+    .brand-name {
+        font-size: 0.95rem;
+    }
+
+    .hero-title {
+        font-size: 1.25rem;
+    }
+
+    .price-amount {
+        font-size: 1.3rem;
+    }
+
+    .float-btn {
+        font-size: 0.65rem;
+        padding: 5px 2px;
     }
 }
 
