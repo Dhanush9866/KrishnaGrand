@@ -1,0 +1,12 @@
+{
+  "name": "krishna-grand-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Krishna Grand Luxury Rooms",
+  "main": "start.js",
+  "scripts": {
+    "start": "node start.js"
+  },
+  "dependencies": {
+    "live-server": "^1.2.2"
+  }
+}

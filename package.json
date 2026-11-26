@@ -1,0 +1,24 @@
+{
+  "name": "krishna-grand",
+  "version": "1.0.0",
+  "description": "Krishna Grand Luxury Rooms - Web Application & Booking Engine",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "npm start --prefix frontend",
+    "frontend": "npm start --prefix frontend",
+    "backend": "node backend/server.js",
+    "dev:backend": "node --watch backend/server.js"
+  },
+  "keywords": [
+    "hotel",
+    "lodge",
+    "booking",
+    "krishna-grand"
+  ],
+  "author": "Krishna Grand",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
