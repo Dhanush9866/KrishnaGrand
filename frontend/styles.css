@@ -2439,3 +2439,285 @@ h1, h2, h3, h4 {
     border-top: 1px solid #333;
     background: #1A1A1A;
 }
+
+/* ==========================================================================
+   LUXURY VISUAL EFFECTS & ANIMATIONS ENGINE
+   ========================================================================== */
+
+/* 1. Royal Gold Shimmer Sweep on Buttons & Badges */
+.btn-gold,
+.btn-primary,
+.badge-tag,
+.btn-whatsapp {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-gold::after,
+.btn-primary::after,
+.badge-tag::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 45%;
+    height: 200%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    transform: rotate(25deg);
+    animation: royalShimmerSweep 4.2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes royalShimmerSweep {
+    0%, 65% {
+        left: -75%;
+    }
+    100% {
+        left: 175%;
+    }
+}
+
+/* 2. Scroll-Driven Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.94);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.revealed {
+    opacity: 1 !important;
+    transform: translate(0, 0) scale(1) !important;
+}
+
+/* Reveal Stagger Delays */
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.16s; }
+.stagger-3 { transition-delay: 0.24s; }
+.stagger-4 { transition-delay: 0.32s; }
+.stagger-5 { transition-delay: 0.40s; }
+.stagger-6 { transition-delay: 0.48s; }
+
+/* 3. Hero Ambient Royal Gold Glow & Sparkles */
+.hero-glow {
+    position: absolute;
+    top: 15%;
+    left: 8%;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, rgba(122, 28, 28, 0.08) 50%, transparent 72%);
+    filter: blur(70px);
+    pointer-events: none;
+    z-index: 2;
+    animation: heroGlowPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlowPulse {
+    0% {
+        transform: scale(0.9) translate(0, 0);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1.15) translate(30px, 20px);
+        opacity: 1;
+    }
+}
+
+.hero-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: var(--gold-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--gold-accent), 0 0 20px rgba(212, 175, 55, 0.6);
+    opacity: 0;
+    animation: sparkleFloat 5s infinite ease-in-out;
+}
+
+.sparkle:nth-child(1) { top: 25%; left: 18%; animation-delay: 0s; width: 4px; height: 4px; }
+.sparkle:nth-child(2) { top: 60%; left: 35%; animation-delay: 1.2s; width: 6px; height: 6px; }
+.sparkle:nth-child(3) { top: 35%; left: 70%; animation-delay: 2.1s; width: 5px; height: 5px; }
+.sparkle:nth-child(4) { top: 75%; left: 80%; animation-delay: 3s; width: 4px; height: 4px; }
+.sparkle:nth-child(5) { top: 20%; left: 85%; animation-delay: 0.7s; width: 6px; height: 6px; }
+.sparkle:nth-child(6) { top: 80%; left: 20%; animation-delay: 2.5s; width: 5px; height: 5px; }
+
+@keyframes sparkleFloat {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.9;
+        transform: translateY(-20px) scale(1.2);
+    }
+    80% {
+        opacity: 0.5;
+        transform: translateY(-40px) scale(0.9);
+    }
+    100% {
+        transform: translateY(-60px) scale(0.3);
+        opacity: 0;
+    }
+}
+
+/* 4. Scrolled Sticky Header Frosted Elevation */
+.main-header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 6px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(212, 175, 55, 0.35);
+}
+
+/* 5. Floating Back-to-Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--primary-maroon), var(--primary-dark-maroon));
+    color: var(--gold-accent);
+    border: 1.5px solid var(--gold-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(122, 28, 28, 0.35), 0 0 12px rgba(212, 175, 55, 0.3);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(18px) scale(0.85);
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.back-to-top:hover {
+    background: var(--gold-accent);
+    color: var(--primary-dark-maroon);
+    border-color: #FFF;
+    transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.5);
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 68px; /* Sits cleanly above the fixed mobile bottom bar */
+        right: 16px;
+        width: 38px;
+        height: 38px;
+        font-size: 0.95rem;
+    }
+}
+
+/* 6. Click Ripple Effect */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: rippleAnim 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes rippleAnim {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* 7. Enhanced Card Hover Depth & Glow */
+.room-card {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.room-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(122, 28, 28, 0.14), 0 0 25px rgba(212, 175, 55, 0.18);
+    border-color: rgba(212, 175, 55, 0.5);
+}
+
+.amenity-box {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.amenity-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(122, 28, 28, 0.1), 0 0 18px rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.6);
+}
+
+.amenity-box:hover .amenity-icon {
+    transform: scale(1.12) rotate(4deg);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.contact-card {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(122, 28, 28, 0.12), 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+/* Reduced Motion Preference for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .btn-gold::after,
+    .btn-primary::after,
+    .badge-tag::after,
+    .sparkle,
+    .hero-glow {
+        animation: none !important;
+    }
+}

@@ -20,7 +20,7 @@
         rel="stylesheet">
     <!-- FontAwesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css?v=2.5">
+    <link rel="stylesheet" href="styles.css?v=2.6">
 </head>
 
 <body>
@@ -104,14 +104,23 @@
     <!-- Hero Section -->
     <section class="hero-section" id="home">
         <div class="hero-overlay"></div>
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-particles" aria-hidden="true">
+            <span class="sparkle"></span>
+            <span class="sparkle"></span>
+            <span class="sparkle"></span>
+            <span class="sparkle"></span>
+            <span class="sparkle"></span>
+            <span class="sparkle"></span>
+        </div>
         <div class="container hero-content">
-            <div class="badge-tag"><i class="fa-solid fa-crown"></i> Welcome to Rajahmundry's Premium Lodge</div>
-            <h1 class="hero-title">Experience Royal Comfort & Luxury Stay at <span class="gold-text">Krishna
+            <div class="badge-tag reveal"><i class="fa-solid fa-crown"></i> Welcome to Rajahmundry's Premium Lodge</div>
+            <h1 class="hero-title reveal stagger-1">Experience Royal Comfort & Luxury Stay at <span class="gold-text">Krishna
                     Grand</span></h1>
-            <p class="hero-subtitle">Sanitized Luxury & Premium Rooms with 24/7 Service and Unmatched Hospitality in the
+            <p class="hero-subtitle reveal stagger-2">Sanitized Luxury & Premium Rooms with 24/7 Service and Unmatched Hospitality in the
                 Heart of Rajahmundry.</p>
 
-            <div class="hero-buttons">
+            <div class="hero-buttons reveal stagger-3">
                 <a href="#booking" class="btn btn-primary btn-lg"><i class="fa-solid fa-clock"></i> Reserve Your
                     Stay</a>
                 <a href="tel:9666798444" class="btn btn-secondary btn-lg"><i class="fa-solid fa-phone-flip"></i> Call
@@ -122,18 +131,18 @@
             </div>
 
             <!-- Highlights Bar -->
-            <div class="hero-highlights">
+            <div class="hero-highlights reveal stagger-4">
                 <div class="highlight-item">
                     <i class="fa-solid fa-business-time"></i>
                     <div>
-                        <strong>24-Hour Stay</strong>
+                        <strong><span data-counter="24" data-suffix="-Hour">24-Hour</span> Stay</strong>
                         <small>Check-in Anytime</small>
                     </div>
                 </div>
                 <div class="highlight-item">
                     <i class="fa-solid fa-snowflake"></i>
                     <div>
-                        <strong>100% Air Conditioned</strong>
+                        <strong><span data-counter="100" data-suffix="%">100%</span> Air Conditioned</strong>
                         <small>Chilled Comfort Rooms</small>
                     </div>
                 </div>
@@ -158,7 +167,7 @@
     <!-- Booking Widget / Slot Reservation Engine -->
     <section class="booking-section" id="booking">
         <div class="container">
-            <div class="card booking-card">
+            <div class="card booking-card reveal">
                 <div class="card-header">
                     <h2><i class="fa-solid fa-calendar-days"></i> Reserve Your Room (24 Hours Stay)</h2>
                     <p>Select your date and room type to check availability and confirm your booking instantly.</p>
@@ -263,7 +272,7 @@
     <!-- Rooms Section -->
     <section class="rooms-section" id="rooms">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <span class="section-badge">Accommodation</span>
                 <h2>Our Luxury Rooms & Suites</h2>
                 <p>Designed for comfort, privacy, and peaceful relaxation in Rajahmundry.</p>
@@ -271,7 +280,7 @@
 
             <div class="rooms-grid">
                 <!-- Room Card 1 -->
-                <div class="room-card">
+                <div class="room-card reveal stagger-1">
                     <div class="room-img-wrapper">
                         <img id="luxuryMainImg" src="assets/luxury-main.jpg" alt="Luxury Room"
                             onerror="this.src='assets/deluxe.png';">
@@ -312,7 +321,7 @@
                 </div>
 
                 <!-- Room Card 2 -->
-                <div class="room-card">
+                <div class="room-card reveal stagger-2">
                     <div class="room-img-wrapper">
                         <img id="premiumMainImg" src="assets/premium-main.jpg" alt="Premium Room"
                             onerror="this.src='assets/executive.png';">
@@ -352,7 +361,7 @@
                 </div>
 
                 <!-- Room Card 3 -->
-                <div class="room-card suite-card">
+                <div class="room-card suite-card reveal stagger-3">
                     <div class="room-img-wrapper">
                         <img id="suiteMainImg" src="assets/suite-main.jpg" alt="Krishna Grand Suite Room"
                             onerror="this.src='assets/family.png';">
@@ -402,48 +411,48 @@
     <!-- Lodge Facilities & Amenities -->
     <section class="amenities-section" id="amenities">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <span class="section-badge">Why Choose Us</span>
                 <h2>Premium Guest Facilities</h2>
                 <p>We take pride in offering clean, secure, and hassle-free lodging in Danavaipeta.</p>
             </div>
 
             <div class="amenities-grid">
-                <div class="amenity-box">
+                <div class="amenity-box reveal stagger-1">
                     <div class="amenity-icon"><i class="fa-solid fa-hospital-user"></i></div>
                     <h4>Hospital Proximity</h4>
                     <p>Located directly opposite Bommireddy Srinivas Hospital & above YSR Jakkampudi Blood Bank for
                         medical visitors.</p>
                 </div>
 
-                <div class="amenity-box">
+                <div class="amenity-box reveal stagger-2">
                     <div class="amenity-icon"><i class="fa-solid fa-pump-medical"></i></div>
                     <h4>100% Sanitized Rooms</h4>
                     <p>Rigorous hygiene protocols with fresh disinfected linen, pillows, and sparkling clean bathrooms.
                     </p>
                 </div>
 
-                <div class="amenity-box">
+                <div class="amenity-box reveal stagger-3">
                     <div class="amenity-icon"><i class="fa-solid fa-elevator"></i></div>
                     <h4>Elevator & Parking</h4>
                     <p>Smooth lift access to all floor rooms with hassle-free parking spaces for cars and two-wheelers.
                     </p>
                 </div>
 
-                <div class="amenity-box">
+                <div class="amenity-box reveal stagger-4">
                     <div class="amenity-icon"><i class="fa-solid fa-bolt"></i></div>
                     <h4>24/7 Power Backup</h4>
                     <p>Heavy-duty soundless generator backup ensures uninterrupted lighting and fan/AC operation.</p>
                 </div>
 
-                <div class="amenity-box">
+                <div class="amenity-box reveal stagger-5">
                     <div class="amenity-icon"><i class="fa-solid fa-bell-concierge"></i></div>
                     <h4>24-Hour Room Service</h4>
                     <p>Attentive room service boys ready to serve tea, coffee, mineral water, and order food on request.
                     </p>
                 </div>
 
-                <div class="amenity-box">
+                <div class="amenity-box reveal stagger-6">
                     <div class="amenity-icon"><i class="fa-solid fa-shield-halved"></i></div>
                     <h4>Safe & Family Secure</h4>
                     <p>CCTV surveillance in public corridors and friendly reception staff ensuring full safety for
@@ -456,7 +465,7 @@
     <!-- Location & Landmarks Section -->
     <section class="location-section" id="location">
         <div class="container">
-            <div class="location-grid">
+            <div class="location-grid reveal">
                 <div class="location-info">
                     <span class="section-badge">Prime Address</span>
                     <h2>Located in Central Rajahmundry</h2>
@@ -513,7 +522,7 @@
     <!-- Contacts Section -->
     <section class="contact-section" id="contact">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <span class="section-badge">Get In Touch</span>
                 <h2>Contact & Reception Desk</h2>
                 <p>We are available 24 hours a day to assist you with room reservations and inquiries.</p>
@@ -521,7 +530,7 @@
 
             <div class="contacts-cards-grid">
                 <!-- Management Card 1 -->
-                <div class="contact-card border-gold">
+                <div class="contact-card border-gold reveal stagger-1">
                     <div class="contact-card-icon"><i class="fa-solid fa-user-gear"></i></div>
                     <h3>Kothapeta Raja</h3>
                     <p class="contact-role">Management</p>
@@ -531,7 +540,7 @@
                 </div>
 
                 <!-- Management Card 2 -->
-                <div class="contact-card border-gold">
+                <div class="contact-card border-gold reveal stagger-2">
                     <div class="contact-card-icon"><i class="fa-solid fa-user-tie"></i></div>
                     <h3>B. Vara Prasad</h3>
                     <p class="contact-role">Management</p>
@@ -541,7 +550,7 @@
                 </div>
 
                 <!-- Front Desk Card -->
-                <div class="contact-card featured-contact">
+                <div class="contact-card featured-contact reveal stagger-3">
                     <div class="contact-card-icon"><i class="fa-solid fa-hotel"></i></div>
                     <h3>Front Desk Reception</h3>
                     <p class="contact-role">Room Bookings & Support (24/7)</p>
@@ -736,6 +745,11 @@
         </div>
     </div>
 
+    <!-- Floating Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to Top" title="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <!-- Sticky Floating Action Bar for Mobile -->
     <div class="floating-mobile-bar">
         <a href="tel:9848241555" class="float-btn float-call"><i class="fa-solid fa-phone"></i> Call Reception</a>
@@ -744,7 +758,7 @@
                 class="fa-brands fa-whatsapp"></i> WhatsApp</a>
     </div>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=2.6"></script>
 </body>
 
 </html>

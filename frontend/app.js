@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     calculatePrice();
     setupMobileNav();
     loadStoredBookings();
+    initVisualEffects();
 });
 
 // Fetch Room Pricing dynamically from Backend API
@@ -490,4 +491,158 @@ function updateGalleryView() {
             <img src="${p.src}" class="g-thumb ${i === activeGalleryIdx ? 'active' : ''}" onclick="setGalleryPhoto(${i})" alt="${p.title}">
         `).join('');
     }
+}
+
+/* ==========================================================================
+   LUXURY INTERACTIVE EFFECTS ENGINE
+   ========================================================================== */
+
+function initVisualEffects() {
+    initScrollReveal();
+    initStickyHeaderEffects();
+    initBackToTop();
+    initButtonRipples();
+    initStatCounters();
+}
+
+// 1. Smooth Scroll-Driven Reveal Animations with Stagger
+function initScrollReveal() {
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    if (!revealElements.length) return;
+
+    if ('IntersectionObserver' in window) {
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+        // Fallback for older browsers
+        revealElements.forEach(el => el.classList.add('revealed'));
+    }
+}
+
+// 2. Sticky Header Elevation & Frosted Blur on Scroll
+function initStickyHeaderEffects() {
+    const header = document.getElementById('header');
+    if (!header) return;
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                if (window.scrollY > 40) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+}
+
+// 3. Floating Back to Top Button
+function initBackToTop() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 350) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    }, { passive: true });
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// 4. Subtle Radial Ripple Effect on Button Clicks
+function initButtonRipples() {
+    const buttons = document.querySelectorAll('.btn, .float-btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            // Avoid adding ripple if element already has many children or is disabled
+            const rect = this.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple-effect');
+
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = `${size}px`;
+
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+}
+
+// 5. Animated Number Counter for Highlights
+function initStatCounters() {
+    const counterElements = document.querySelectorAll('[data-counter]');
+    if (!counterElements.length) return;
+
+    if ('IntersectionObserver' in window) {
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const finalVal = parseInt(target.getAttribute('data-counter'), 10);
+                    const suffix = target.getAttribute('data-suffix') || '';
+                    animateCounter(target, finalVal, suffix);
+                    observer.unobserve(target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        counterElements.forEach(el => counterObserver.observe(el));
+    }
+}
+
+function animateCounter(element, targetValue, suffix = '') {
+    const duration = 1400; // ms
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Easing out quart
+        const easeProgress = 1 - Math.pow(1 - progress, 4);
+        const currentVal = Math.floor(easeProgress * targetValue);
+
+        element.innerText = `${currentVal}${suffix}`;
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.innerText = `${targetValue}${suffix}`;
+        }
+    }
+
+    requestAnimationFrame(update);
 }
