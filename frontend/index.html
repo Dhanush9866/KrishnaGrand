@@ -20,14 +20,15 @@
         rel="stylesheet">
     <!-- FontAwesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2.5">
 </head>
 
 <body>
 
     <!-- Top Contact Bar -->
     <div class="top-bar">
-        <div class="container top-bar-content">
+        <!-- Desktop View (Static flex) -->
+        <div class="container top-bar-content top-bar-desktop">
             <div class="contact-info">
                 <span><i class="fa-solid fa-phone"></i> Reception: <a href="tel:9666798444">9666798444</a> | <a
                         href="tel:9848241555">9848241555</a></span>
@@ -40,6 +41,32 @@
             </div>
             <div class="top-bar-right">
                 <span><i class="fa-solid fa-location-dot"></i> Danavaipeta, Rajahmundry</span>
+            </div>
+        </div>
+
+        <!-- Mobile View (Smooth Infinite Marquee Ticker) -->
+        <div class="top-bar-ticker top-bar-mobile" title="Tap or hold to pause">
+            <div class="ticker-track">
+                <div class="ticker-item">
+                    <span><i class="fa-solid fa-phone"></i> Reception: <a href="tel:9666798444">9666798444</a> | <a href="tel:9848241555">9848241555</a></span>
+                    <span class="ticker-sep">✦</span>
+                    <span><i class="fa-solid fa-user-tie"></i> Kothapeta Raja: <a href="tel:9866993132">9866993132</a></span>
+                    <span class="ticker-sep">✦</span>
+                    <span><i class="fa-solid fa-user-tie"></i> B. Vara Prasad: <a href="tel:9000556699">9000556699</a></span>
+                    <span class="ticker-sep">✦</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Danavaipeta, Rajahmundry</span>
+                    <span class="ticker-sep">✦</span>
+                </div>
+                <div class="ticker-item" aria-hidden="true">
+                    <span><i class="fa-solid fa-phone"></i> Reception: <a href="tel:9666798444">9666798444</a> | <a href="tel:9848241555">9848241555</a></span>
+                    <span class="ticker-sep">✦</span>
+                    <span><i class="fa-solid fa-user-tie"></i> Kothapeta Raja: <a href="tel:9866993132">9866993132</a></span>
+                    <span class="ticker-sep">✦</span>
+                    <span><i class="fa-solid fa-user-tie"></i> B. Vara Prasad: <a href="tel:9000556699">9000556699</a></span>
+                    <span class="ticker-sep">✦</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Danavaipeta, Rajahmundry</span>
+                    <span class="ticker-sep">✦</span>
+                </div>
             </div>
         </div>
     </div>
